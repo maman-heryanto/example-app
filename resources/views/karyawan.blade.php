@@ -3,6 +3,11 @@
 
 @section('container')
 {{-- <h2>Laporan Kegiatan ABC</h2> --}}
+{{-- tambah Karyawan --}}
+<div class="container mb-5">
+    <a type="button" class="btn btn-primary waves-effect" href="">Tambah Karyawan</a>
+</div>
+
 <div class="container">
             <!-- Basic Table -->
             <div class="row clearfix">
@@ -17,25 +22,24 @@
                           <table class="table">
                               <thead>
                                   <tr>
-                                      <th>No</th>
                                       <th>ID Karyawan</th>
-                                      <th>Kegiatan</th>
-                                      <th>Id Proyek</th>
-                                      <th>Ruas</th>
-                                      <th>Start</th>
-                                      <th>Target</th>
+                                      <th>Username</th>
+                                      <th>Password</th>
+                                      <th>Nama</th>
+                                      <th>Level</th>
+                                      <th>Aksi</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                @foreach ($laporankegiatan as $lk)
+                                @foreach ($karyawan as $k)
                                 <tr>
-                                  <th scope="row">1</th>
-                                  <td>{{$lk->id_karyawan }}</td>
-                                  <td>{{$lk->kegiatan }}</td>
-                                  <td>{{$lk->id_proyek }}</td>
-                                  <td>{{$lk->ruas }}</td>
-                                  <td>{{$lk->start }}</td>
-                                  <td>{{$lk->target }}</td>
+                                  {{-- <th scope="row">1</th> --}}
+                                  <td>{{$k->id_karyawan }}</td>
+                                  <td>{{$k->username }}</td>
+                                  <td>{{$k->password }}</td>
+                                  <td>{{$k->name }}</td>
+                                  <td>{{$k->level }}</td>
+                                  <td><a href=""class="badge bg-red">Hapus</a> || <a href=""class="badge bg-green">Ubah</a></td>
                               </tr>
                                 @endforeach
                               </tbody>

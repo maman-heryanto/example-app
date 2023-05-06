@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\LaporanKegiatanController;
+use App\Models\LaporanKegiatan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +22,8 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard',[
-        'title' => 'Dashboard'
-    ]);
-});
+Route::get('/dashboard', [DashboardController::class,'dashboard']);
 
-Route::get('/laporan-kegiatan', function () {
-    return view('laporankegiatan',[
-        'title' => 'Laporan-kegiatan'
-    ]);
-});
+Route::get('/laporan-kegiatan', [LaporanKegiatanController::class,'index']);
+
+Route::get('/karyawan', [KaryawanController::class,'index']);

@@ -35,9 +35,9 @@
                 </a>
             </li>
             <li>
-                <a href="vendor/adminbsb/pages/helper-classes.html">
-                    <i class="material-icons">layers</i>
-                    <span>Helper Classes</span>
+                <a href="/karyawan">
+                    <i class="material-icons">assignment_ind</i>
+                    <span>Karyawan</span>
                 </a>
             </li>
             <li>
