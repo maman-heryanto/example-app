@@ -4,16 +4,14 @@
 @section('container')
 {{-- <h2>Laporan Kegiatan ABC</h2> --}}
 {{-- tambah Karyawan --}}
-<div class="container mb-5">
-    <a type="button" class="btn btn-primary waves-effect" href="/karyawan/tambahkaryawan">Tambah Karyawan</a>
+<div class="container mb-5" style="margin-bottom: 10px;">
+    <a type="button" class="btn btn-primary waves-effect mb-3"  href="/karyawan/tambahkaryawan">Tambah Karyawan</a>
 </div>
-
-<div class="container">
-            <!-- Basic Table -->
-            <div class="row clearfix">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="card">
-                      <div class="header">
+<div class="container mt-3">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
                           <h2>
                               Laporan Kegiatan
                           </h2>
@@ -39,7 +37,14 @@
                                   <td>{{$k->password }}</td>
                                   <td>{{$k->nama }}</td>
                                   <td>{{$k->level }}</td>
-                                  <td><a href=""class="badge bg-red">Hapus</a> || <a href="/karyawan/{{ $k->id }}/ubah" class="badge bg-green">Ubah</a></td>
+                                  <td>
+                                    <a href="/karyawan/{{ $k->id }}/ubah" class="badge bg-green">Ubah</a> || 
+                                    <form action="/karyawan/{{ $k->id }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <input class="bg-red" type="submit" value="Hapus" >
+                                    </form>
+                                </td>
                               </tr>
                                 @endforeach
                               </tbody>

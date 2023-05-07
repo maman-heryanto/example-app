@@ -12,7 +12,7 @@ class KaryawanController extends Controller
     {
         $karyawan = KaryawanModels::all();
         return view(
-            'karyawan',
+            'karyawan.index',
             [
                 'title' => 'karyawan-page'
             ],
@@ -65,4 +65,12 @@ class KaryawanController extends Controller
         ]);
         return redirect('karyawan');
     }
+    
+    public function destroy($id)
+    {
+        $karyawan = KaryawanModels::find($id);
+        $karyawan->delete();
+        return redirect('karyawan');
+    }
+
 }

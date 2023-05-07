@@ -14,22 +14,28 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="vendor/adminbsb/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ asset('vendor/adminbsb/plugins/bootstrap/css/bootstrap.css') }}"  rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="vendor/adminbsb/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="{{ asset('vendor/adminbsb/plugins/node-waves/waves.css') }}"  rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="vendor/adminbsb/plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="{{ asset('vendor/adminbsb/plugins/animate-css/animate.css') }}"  rel="stylesheet" />
 
     <!-- Morris Chart Css-->
-    <link href="vendor/adminbsb/plugins/morrisjs/morris.css" rel="stylesheet" />
+    <link href="{{ asset('vendor/adminbsb/plugins/morrisjs/morris.css') }}"  rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="vendor/adminbsb/css/style.css" rel="stylesheet">
+    <link href="{{ asset('vendor/adminbsb/css/style.css') }}"  rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="vendor/adminbsb/css/themes/all-themes.css" rel="stylesheet" />
+    <link href="{{ asset('vendor/adminbsb/css/themes/all-themes.css') }}"  rel="stylesheet" />
+
+    <!-- form select ex -->
+<link rel="stylesheet" href="{{ asset('vendor/adminbsb/extension/bootstrap-select.min.js') }}">
+<link rel="stylesheet" href="{{ asset('vendor/adminbsb/extension/select-bootstrap-select.min.css') }}">
+
+
 </head>
 
 <body class="theme-red">
@@ -85,25 +91,25 @@
 
     
     <!-- Jquery Core Js -->
-    <script src="vendor/adminbsb/plugins/jquery/jquery.min.js"></script>
+    <script src="{{ asset('vendor/adminbsb/plugins/jquery/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="vendor/adminbsb/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="{{ asset('vendor/adminbsb/plugins/bootstrap/js/bootstrap.js') }}"></script>
 
     <!-- Select Plugin Js -->
-    <script src="vendor/adminbsb/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="{{ asset('vendor/adminbsb/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
     <!-- Slimscroll Plugin Js -->
-    <script src="vendor/adminbsb/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="{{ asset('vendor/adminbsb/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 
     <!-- Waves Effect Plugin Js -->
-    <script src="vendor/adminbsb/plugins/node-waves/waves.js"></script>
+    <script src="{{ asset('vendor/adminbsb/plugins/node-waves/waves.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="vendor/adminbsb/js/admin.js"></script>
+    <script src="{{ asset('vendor/adminbsb/js/admin.js') }}"></script>
 
     <!-- Demo Js -->
-    <script src="vendor/adminbsb/js/demo.js"></script>
+    <script src="{{ asset('vendor/adminbsb/js/demo.js') }}"></script>
 </body>
 
 </html>
