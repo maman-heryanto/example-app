@@ -31,6 +31,8 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('vendor/adminbsb/css/themes/all-themes.css') }}"  rel="stylesheet" />
 
+    <!-- Bootstrap DatePicker Css -->
+        <link href="{{ asset('vendor/adminbsb/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
     <!-- form select ex -->
 <link rel="stylesheet" href="{{ asset('vendor/adminbsb/extension/bootstrap-select.min.js') }}">
 <link rel="stylesheet" href="{{ asset('vendor/adminbsb/extension/select-bootstrap-select.min.css') }}">
@@ -108,8 +110,11 @@
     <!-- Custom Js -->
     <script src="{{ asset('vendor/adminbsb/js/admin.js') }}"></script>
 
-    <!-- Demo Js -->
+        <!-- Bootstrap Datepicker Plugin Js -->
+        <script src="{{ asset('vendor/adminbsb/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+           <!-- Custom Js -->
     <script src="{{ asset('vendor/adminbsb/js/demo.js') }}"></script>
+    <script src="{{ asset('vendor/adminbsb/js/pages/forms/basic-form-elements.js') }}"></script>
 </body>
 
 </html>

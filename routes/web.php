@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\LaporanKegiatanController;
 use App\Models\LaporanKegiatan;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProyekController;
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanKegiatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,25 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
-
-Route::get('/laporan-kegiatan', [LaporanKegiatanController::class,'index']);
-
+//laporan-kegiatan
+Route::get('/laporankegiatan', [LaporanKegiatanController::class,'index']);
+Route::get('/laporankegiatan/tambahlaporankegiatan', [LaporanKegiatanController::class,'tambahlaporankegiatan']);
+Route::post('/laporankegiatan/store', [LaporanKegiatanController::class,'store']);
+Route::get('/laporankegiatan/{id}/ubah', [LaporanKegiatanController::class,'ubah']);
+Route::put('/laporankegiatan/{id}', [LaporanKegiatanController::class,'update']);
+Route::delete('/laporankegiatan/{id}', [LaporanKegiatanController::class,'destroy']);
+//proyek
+Route::get('/proyek', [ProyekController::class,'index']);
+Route::get('/proyek/tambahproyek', [ProyekController::class,'tambahproyek']);
+Route::post('/proyek/store', [ProyekController::class,'store']);
+Route::get('/proyek/{id}/ubah', [ProyekController::class,'ubah']);
+Route::put('/proyek/{id}', [ProyekController::class,'update']);
+Route::delete('/proyek/{id}', [ProyekController::class,'destroy']);
+//karyawan
 Route::get('/karyawan', [KaryawanController::class,'index']);
 Route::get('/karyawan/tambahkaryawan', [KaryawanController::class,'tambahkaryawan']);
 Route::post('/karyawan/store', [KaryawanController::class,'store']);
 Route::get('/karyawan/{id}/ubah', [KaryawanController::class,'ubah']);
 Route::put('/karyawan/{id}', [KaryawanController::class,'update']);
 Route::delete('/karyawan/{id}', [KaryawanController::class,'destroy']);
+

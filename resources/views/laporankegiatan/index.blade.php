@@ -2,10 +2,8 @@
 
 
 @section('container')
-{{-- <h2>Laporan Kegiatan ABC</h2> --}}
-{{-- tambah Karyawan --}}
 <div class="container mb-5" style="margin-bottom: 10px;">
-    <a type="button" class="btn btn-primary waves-effect mb-3"  href="/karyawan/tambahkaryawan">Tambah Karyawan</a>
+    <a type="button" class="btn btn-primary waves-effect mb-3"  href="/laporankegiatan/tambahlaporankegiatan">Tambah laporankegiatan</a>
 </div>
 <div class="container mt-3">
     <div class="row clearfix">
@@ -13,33 +11,35 @@
             <div class="card">
                 <div class="header">
                           <h2>
-                              Data Karyawan
+                              Data Laporan Kegiatan
                           </h2>
                       </div>
                       <div class="body table-responsive">
                           <table class="table">
                               <thead>
                                   <tr>
-                                      <th>ID Karyawan</th>
-                                      <th>Username</th>
-                                      <th>Password</th>
-                                      <th>Nama</th>
-                                      <th>Level</th>
+                                      <th>ID Laporan Kegiatan</th>
+                                      <th>Nama Karyawan</th>
+                                      <th>Kegiatan</th>
+                                      <th>Proyek</th>
+                                      <th>Ruas</th>
+                                      <th>Start</th>
+                                      <th>Target</th>
                                       <th>Aksi</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                @foreach ($karyawan as $k)
+                                @foreach ($laporankegiatan as $lk)
                                 <tr>
                                   {{-- <th scope="row">1</th> --}}
-                                  <td>{{$k->id }}</td>
-                                  <td>{{$k->username }}</td>
-                                  <td>{{$k->password }}</td>
-                                  <td>{{$k->nama }}</td>
-                                  <td>{{$k->level }}</td>
+                                  <td>{{$lk->id }}</td>
+                                  <td>{{$lk->username }}</td>
+                                  <td>{{$lk->password }}</td>
+                                  <td>{{$lk->nama }}</td>
+                                  <td>{{$lk->level }}</td>
                                   <td>
-                                    <a href="/karyawan/{{ $k->id }}/ubah" class="badge bg-green">Ubah</a> || 
-                                    <form action="/karyawan/{{ $k->id }}" method="post">
+                                    <a href="/laporankegiatan/{{ $lk->id }}/ubah" class="badge bg-green">Ubah</a> || 
+                                    <form action="/laporankegiatan/{{ $lk->id }}" method="post">
                                         @method('delete')
                                         @csrf
                                         <input class="bg-red" type="submit" value="Hapus" >

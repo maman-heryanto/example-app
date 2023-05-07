@@ -34,8 +34,8 @@
                           </div>
                           
                           <div class="row clearfix">
-                                <select class="form-control show-tick">
-                                    <option value="">-- Please select --</option>
+                                <select class="form-control show-tick" name="level" id="level">
+                                    <option value="" >-- Please select --</option>
                                     <option value="admin">Admin</option>
                                     <option value="karyawan">Karyawan</option>
                                 </select>
