@@ -27,3 +27,7 @@ Route::get('/dashboard', [DashboardController::class,'dashboard']);
 Route::get('/laporan-kegiatan', [LaporanKegiatanController::class,'index']);
 
 Route::get('/karyawan', [KaryawanController::class,'index']);
+Route::get('/karyawan/tambahkaryawan', [KaryawanController::class,'tambahkaryawan']);
+Route::post('/karyawan/store', [KaryawanController::class,'store']);
+Route::get('/karyawan/{id}/ubah', [KaryawanController::class,'ubah']);
+Route::put('/karyawan/{id}', [KaryawanController::class,'update']);

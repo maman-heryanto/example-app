@@ -5,7 +5,7 @@
 {{-- <h2>Laporan Kegiatan ABC</h2> --}}
 {{-- tambah Karyawan --}}
 <div class="container mb-5">
-    <a type="button" class="btn btn-primary waves-effect" href="">Tambah Karyawan</a>
+    <a type="button" class="btn btn-primary waves-effect" href="/karyawan/tambahkaryawan">Tambah Karyawan</a>
 </div>
 
 <div class="container">
@@ -34,12 +34,12 @@
                                 @foreach ($karyawan as $k)
                                 <tr>
                                   {{-- <th scope="row">1</th> --}}
-                                  <td>{{$k->id_karyawan }}</td>
+                                  <td>{{$k->id }}</td>
                                   <td>{{$k->username }}</td>
                                   <td>{{$k->password }}</td>
-                                  <td>{{$k->name }}</td>
+                                  <td>{{$k->nama }}</td>
                                   <td>{{$k->level }}</td>
-                                  <td><a href=""class="badge bg-red">Hapus</a> || <a href=""class="badge bg-green">Ubah</a></td>
+                                  <td><a href=""class="badge bg-red">Hapus</a> || <a href="/karyawan/{{ $k->id }}/ubah" class="badge bg-green">Ubah</a></td>
                               </tr>
                                 @endforeach
                               </tbody>
