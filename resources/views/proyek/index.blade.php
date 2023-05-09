@@ -34,11 +34,11 @@
                                   <td>{{$p->volume }} m³</td>
                                   <td>{{ date('d-M-Y', strtotime($p->created_at )); }}</td>
                                   <td>
-                                    <a href="/proyek/{{ $p->id }}/ubah" class="badge bg-green">Ubah</a> || 
-                                    <form action="/proyek/{{ $p->id }}" method="post">
+                                    <a href="/proyek/{{ $p->id }}/ubah" class="btn btn-success">Ubah</a>
+                                    <form action="/proyek/{{ $p->id }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data proyek ini?')">
                                         @method('delete')
                                         @csrf
-                                        <input class="bg-red" type="submit" value="Hapus" >
+                                        <input class="btn btn-danger" type="submit" value="Hapus" >
                                     </form>
                                 </td>
                               </tr>

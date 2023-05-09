@@ -20,10 +20,16 @@ use App\Http\Controllers\LaporanKegiatanController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 
-Route::get('/dashboard', [DashboardController::class,'dashboard']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [DashboardController::class,'dashboard']);
+
+Route::middleware(['auth'])->group(function () {
+//dashboard
 //laporan-kegiatan
 Route::get('/laporankegiatan', [LaporanKegiatanController::class,'index']);
 Route::get('/laporankegiatan/tambahlaporankegiatan', [LaporanKegiatanController::class,'tambahlaporankegiatan']);
@@ -45,4 +51,6 @@ Route::post('/karyawan/store', [KaryawanController::class,'store']);
 Route::get('/karyawan/{id}/ubah', [KaryawanController::class,'ubah']);
 Route::put('/karyawan/{id}', [KaryawanController::class,'update']);
 Route::delete('/karyawan/{id}', [KaryawanController::class,'destroy']);
+
+});
 

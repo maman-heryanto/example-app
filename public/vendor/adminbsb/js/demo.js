@@ -105,3 +105,14 @@ function loadTracking() {
     ga('send', 'pageview');
 }
 //========================================================================================================
+
+// $('.datepicker').datepicker({
+//     format: 'yyyy-mm-dd',
+//     autoclose: true
+// });
+$('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true
+}).on('changeDate', function() {
+    $(this).datepicker('hide');
+});
