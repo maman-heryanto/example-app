@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KaryawanModels;
+use App\Models\LevelModels;
 use App\Http\Controllers\DB;
+use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {
     public function index()
     {
-        $karyawan = KaryawanModels::all();
+        // $karyawan = KaryawanModels::all();
+        $karyawan = KaryawanModels::join('level', 'users.id_level', '=', 'level.id')
+        ->select('users.*', 'level.nama_level')
+        ->get();
         return view(
             'karyawan.index',
             [
@@ -23,19 +28,30 @@ class KaryawanController extends Controller
     // insert
     public function tambahkaryawan()
     {
+        $level = LevelModels::all();
         return view(
             'karyawan.tambahkaryawan',
             [
                 'title' => 'tambah-karyawan-page'
             ],
-            
+             compact('level')
         );
     }
 
     public function store(Request $request)
     {
-        KaryawanModels::create($request->except(['_token','submit','updated_at',
-        'created_at']));
+    $request->validate([
+        'id_level' => ['required'],
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'min:8', 'confirmed']
+    ]);
+        KaryawanModels::create([
+            'id_level' => $request['id_level'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
         return redirect('karyawan');
     }
 
@@ -43,26 +59,47 @@ class KaryawanController extends Controller
     public function ubah($id)
     {
         $karyawan = KaryawanModels::find($id);
-        // dd($karyawan);
+        $level = LevelModels::all();
         return view(
             'karyawan.ubah',
             [
                 'title' => 'ubah-karyawan-page'
             ],
-            compact('karyawan')
+            compact('karyawan','level')
         );
     }
-
    
     public function update($id,Request $request)
     {
         $karyawan = KaryawanModels::find($id);
-        $karyawan->update([
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-            'nama' => $request->input('nama'),
-            'level' => $request->input('level')
+
+        $request->validate([
+            'id_level' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ]);
+
+        // $karyawan->update([
+        //     'id_level' => $request->input('id_level'),
+        //     'name' => $request->input('name'),
+        //     'email' => $request->input('email')
+        // ]);
+        if ($request->filled('password')) {
+            $karyawan->update([
+                'id_level' => $request->input('id_level'),
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+            ]);
+        }
+        else {
+            $karyawan->update([
+                'id_level' => $request->input('id_level'),
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+            ]);
+        }
         return redirect('karyawan');
     }
     

@@ -26,13 +26,20 @@
                                         <input type="text" class="form-control" placeholder="Masukan Kegiatan"
                                             id="kegiatan" name="kegiatan" value="{{ $laporankegiatan[0]->kegiatan }}"/>
                                     </div>
+                                    @error('kegiatan')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <select class="form-control show-tick" name="id_proyek" id="id_proyek">
-                                        <option value="{{ $laporankegiatan[0]->id_proyek }}">{{ $laporankegiatan[0]->nama_proyek }}</option>
+                                        {{-- <option value="{{ $laporankegiatan[0]->id_proyek }}">{{ $laporankegiatan[0]->nama_proyek }}</option> --}}
                                         @foreach ($proyek as $p)
-                                            <option value="{{ $p->id }}">{{ $p->nama_proyek }}</option>
+                                            @if ($p->id == $laporankegiatan[0]->id_proyek)
+                                            <option value="{{ $p->id }}" selected>{{ $p->nama_proyek }}</option>      
+                                            @else
+                                            <option value="{{ $p->id }}" >{{ $p->nama_proyek }}</option>      
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -42,6 +49,9 @@
                                         <input type="text" class="form-control" placeholder="Masukan Ruas" id="ruas"
                                             name="ruas" value="{{ $laporankegiatan[0]->ruas }}"/>
                                     </div>
+                                    @error('ruas')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <p class="card-inside">Start Proyek</p>
                                 <div class="form-group">
@@ -50,6 +60,9 @@
                                         <input type="text" class="datepicker form-control"
                                             placeholder="Masukan Start proyek" name="start" id="start" value="{{ $laporankegiatan[0]->start }}">
                                     </div>
+                                    @error('start')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <p class="card-inside">Target Proyek</p>
                                 <div class="form-group">
@@ -58,6 +71,9 @@
                                         <input type="text" class="datepicker form-control"
                                             placeholder="Masukan Target proyek" name="target" id="target" value="{{ $laporankegiatan[0]->target }}">
                                     </div>
+                                    @error('target')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <input type="submit" name="submit" value="Save">

@@ -20,10 +20,10 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ID Karyawan</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
+                                    <th>ID</th>
                                     <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
                                     <th>Level</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -33,17 +33,21 @@
                                     <tr>
                                         {{-- <th scope="row">1</th> --}}
                                         <td>{{ $k->id }}</td>
-                                        <td>{{ $k->username }}</td>
+                                        <td>{{ $k->name }}</td>
+                                        <td>{{ $k->email }}</td>
                                         <td>{{ $k->password }}</td>
-                                        <td>{{ $k->nama }}</td>
-                                        <td>{{ $k->level }}</td>
+                                        <td>{{ $k->nama_level }}</td>
                                         <td>
-                                            <a href="/karyawan/{{ $k->id }}/ubah" class="btn btn-success">Ubah</a>
-                                            <form action="/karyawan/{{ $k->id }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data karyawan ini?')">
-                                                @method('delete')
-                                                @csrf
-                                                <input class="btn btn-danger" type="submit" value="Hapus">
-                                            </form>
+                                            <a href="/karyawan/{{ $k->id }}/ubah"
+                                                class="btn btn-success m-r-2">Ubah</a>
+                                            <span class="pull-right">
+                                                <form action="/karyawan/{{ $k->id }}" method="post"
+                                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus data karyawan ini?')">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <input class="btn btn-danger" type="submit" value="Hapus">
+                                                </form>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

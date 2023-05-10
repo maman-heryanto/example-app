@@ -5,7 +5,8 @@
             <img src="vendor/adminbsb/images/user.png" width="48" height="48" alt="User" />
         </div> --}}
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }}</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }}
+            </div>
             <div class="email">{{ Auth::user()->email }}</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
@@ -50,20 +51,24 @@
                             <span>Laporan-Kegiatan</span>
                         </a>
                     </li>
+                     @if (Auth::user()->id_level == 1)
                     <li>
                         <a href="/proyek">
                             <i class="material-icons">gavel</i>
                             <span>Proyek</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
-            <li>
-                <a href="/karyawan">
-                    <i class="material-icons">assignment_ind</i>
-                    <span>Karyawan</span>
-                </a>
-            </li>
+            @if (Auth::user()->id_level == 1)
+                <li>
+                    <a href="/karyawan">
+                        <i class="material-icons">assignment_ind</i>
+                        <span>Karyawan</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
     <!-- #Menu -->

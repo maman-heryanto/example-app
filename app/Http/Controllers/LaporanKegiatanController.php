@@ -6,15 +6,25 @@ use App\Models\LaporanKegiatan;
 use App\Models\LaporanKegiatanModels;
 use App\Models\ProyekModels;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanKegiatanController extends Controller
 {
     public function index()
     {
-        // $laporankegiatan = LaporanKegiatanModels::all();
-        $laporankegiatan = LaporanKegiatanModels::join('proyek', 'laporan_kegiatan.id_proyek', '=', 'proyek.id')
-        ->join('karyawan', 'karyawan.id', '=', 'laporan_kegiatan.id_karyawan')
-        ->get(['laporan_kegiatan.*','karyawan.nama','proyek.nama_proyek']);
+        
+        $role = Auth::user()->id_level;
+        if ($role == 1) {
+            $laporankegiatan = LaporanKegiatanModels::join('proyek', 'laporan_kegiatan.id_proyek', '=', 'proyek.id')
+            ->join('users', 'users.id', '=', 'laporan_kegiatan.id_karyawan')
+            ->get(['laporan_kegiatan.*','users.name','proyek.nama_proyek']);  
+        }else{
+            $user_id = Auth::id();
+            $laporankegiatan = LaporanKegiatanModels::join('proyek', 'laporan_kegiatan.id_proyek', '=', 'proyek.id')
+            ->join('users', 'users.id', '=', 'laporan_kegiatan.id_karyawan')
+            ->where('users.id', '=', $user_id)
+            ->get(['laporan_kegiatan.*','users.name','proyek.nama_proyek']);
+        }
 
         return view(
             'laporankegiatan.index',
@@ -40,21 +50,30 @@ class LaporanKegiatanController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
+        $request->validate([
+            "id_karyawan" => ['required'],
+            "kegiatan" => ['required'],
+            "id_proyek" => ['required'],
+            "ruas" => ['required'],
+            "start" => ['required'],
+            "target" => ['required'],
+        ]);
         LaporanKegiatanModels::create($request->except(['_token','submit','updated_at',
         'created_at']));
         return redirect('laporankegiatan');
     }
 
-    // //update
+    //update
     public function ubah($id)
     {
         // $laporankegiatan = LaporanKegiatanModels::find($id);
         $proyek = ProyekModels::all();
         
         $laporankegiatan = LaporanKegiatanModels::join('proyek', 'laporan_kegiatan.id_proyek', '=', 'proyek.id')
-        ->join('karyawan', 'karyawan.id', '=', 'laporan_kegiatan.id_karyawan')
+        ->join('users', 'users.id', '=', 'laporan_kegiatan.id_karyawan')
         ->where('laporan_kegiatan.id', '=', $id)
-        ->get(['laporan_kegiatan.*','karyawan.nama','proyek.nama_proyek']);
+        ->get(['laporan_kegiatan.*','users.name','proyek.nama_proyek']);
         // dd($laporankegiatan);
         return view(
             'laporankegiatan.ubah',
@@ -68,7 +87,14 @@ class LaporanKegiatanController extends Controller
    
     public function update($id,Request $request)
     {
-        // dd($request);
+        $request->validate([
+            "id_karyawan" => ['required'],
+            "kegiatan" => ['required'],
+            "id_proyek" => ['required'],
+            "ruas" => ['required','not_regex'],
+            "start" => ['required'],
+            "target" => ['required'],
+        ]);
         $laporankegiatan = LaporanKegiatanModels::find($id);
         $laporankegiatan->update([
             "id_karyawan" => $request->input('id_karyawan'),
@@ -88,6 +114,11 @@ class LaporanKegiatanController extends Controller
         return redirect('laporankegiatan');
     }
 
- 
+    // public function exportPDF(){
+    //     $laporankegiatan = LaporanKegiatanModels::all();
+    //     // $pdf = PDF::loadView('',[ 'title' => 'Laporan-kegiatan'], compact('laporankegiatan'));
+    //     $pdf = PDF::loadView('laporankegiatan.export',['title' => 'Laporan-kegiatan'],compact('laporankegiatan'));
+    //     return $pdf->download('laporan_kegiatan.pdf');
+    // }
      
 }

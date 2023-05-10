@@ -22,7 +22,8 @@
                                       <th>Nama Proyek</th>
                                       <th>Volume</th>
                                       <th>Dibuat</th>
-                                      <th>Aksi</th>
+                                      <th class="text-center">Aksi</th>
+                                      {{-- <th >Aksi</th> --}}
                                   </tr>
                               </thead>
                               <tbody>
@@ -34,12 +35,16 @@
                                   <td>{{$p->volume }} m³</td>
                                   <td>{{ date('d-M-Y', strtotime($p->created_at )); }}</td>
                                   <td>
+                                    {{-- <span class="pull-right m-r-100"> --}}
                                     <a href="/proyek/{{ $p->id }}/ubah" class="btn btn-success">Ubah</a>
+                                    {{-- </span> --}}
+                                    <span class="pull-right">
                                     <form action="/proyek/{{ $p->id }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data proyek ini?')">
                                         @method('delete')
                                         @csrf
                                         <input class="btn btn-danger" type="submit" value="Hapus" >
                                     </form>
+                                    </span>
                                 </td>
                               </tr>
                                 @endforeach

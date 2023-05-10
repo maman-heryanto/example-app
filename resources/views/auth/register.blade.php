@@ -11,6 +11,8 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <input id="id_level" type="hidden" class="form-control @error('id_level') is-invalid @enderror" name="id_level" value="2" required autocomplete="id_level" autofocus>
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
