@@ -15,3 +15,15 @@ Project Laporan Kegiatan AEC
 - PHP Version 8.2.4
 - Node Js Version 18.16.0
 - MariaDB version 10.4.28
+
+## RUN
+- Running your database
+- ```javascript
+php artisan migrate
+```
+- ```javascript
+php artisan serve
+```
+- ```javascript
+npm run dev
+```
