@@ -18,12 +18,12 @@ Project Laporan Kegiatan AEC
 
 ## RUN
 - Running your database
-- ```javascript
+```javascript
 php artisan migrate
 ```
-- ```javascript
+```javascript
 php artisan serve
 ```
-- ```javascript
+```javascript
 npm run dev
 ```
