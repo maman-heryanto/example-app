@@ -37,6 +37,7 @@ Route::post('/laporankegiatan/store', [LaporanKegiatanController::class,'store']
 Route::get('/laporankegiatan/{id}/ubah', [LaporanKegiatanController::class,'ubah']);
 Route::put('/laporankegiatan/{id}', [LaporanKegiatanController::class,'update']);
 Route::delete('/laporankegiatan/{id}', [LaporanKegiatanController::class,'destroy']);
+Route::get('/laporankegiatan/export', [LaporanKegiatanController::class,'export']);
 //proyek
 Route::get('/proyek', [ProyekController::class,'index']);
 Route::get('/proyek/tambahproyek', [ProyekController::class,'tambahproyek']);

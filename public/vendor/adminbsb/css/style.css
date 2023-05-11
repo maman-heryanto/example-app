@@ -3405,7 +3405,7 @@ section.content {
   text-shadow: none; }
 
 /* Dialogs (SweetAlert) ======================== */
-.sweet-alert {
+/* .sweet-alert {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   -ms-border-radius: 0 !important;
@@ -3424,7 +3424,7 @@ section.content {
     -moz-border-radius: 0 !important;
     -ms-border-radius: 0 !important;
     border-radius: 0 !important;
-    padding: 5px 20px !important; }
+    padding: 5px 20px !important; } */
 
 /* Checkbox & Radio ============================ */
 [type="checkbox"] + label {

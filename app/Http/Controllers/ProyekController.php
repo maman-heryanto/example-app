@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProyekModels;
+use Illuminate\Support\Facades\Auth;
 
 class ProyekController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Auth::check() && Auth::user()->id_level == 2) {
+                return abort(403, 'Access denied. Your ip is detected');
+            }
+
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         $proyek = ProyekModels::all();

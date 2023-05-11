@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LaporanKegiatan;
 use App\Models\LaporanKegiatanModels;
 use App\Models\ProyekModels;
+use App\Models\KaryawanModels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,6 @@ class LaporanKegiatanController extends Controller
 {
     public function index()
     {
-        
         $role = Auth::user()->id_level;
         if ($role == 1) {
             $laporankegiatan = LaporanKegiatanModels::join('proyek', 'laporan_kegiatan.id_proyek', '=', 'proyek.id')
@@ -39,12 +39,13 @@ class LaporanKegiatanController extends Controller
     public function tambahlaporankegiatan()
     {
         $proyek = ProyekModels::all();
+        $karyawan = KaryawanModels::all();
         return view(
             'laporankegiatan.tambahlaporankegiatan',
             [
                 'title' => 'Tambah-Laporan-Kegiatan-page'
             ],
-            compact('proyek')
+            compact('proyek','karyawan')
         );
     }
 
@@ -114,11 +115,18 @@ class LaporanKegiatanController extends Controller
         return redirect('laporankegiatan');
     }
 
-    // public function exportPDF(){
-    //     $laporankegiatan = LaporanKegiatanModels::all();
-    //     // $pdf = PDF::loadView('',[ 'title' => 'Laporan-kegiatan'], compact('laporankegiatan'));
-    //     $pdf = PDF::loadView('laporankegiatan.export',['title' => 'Laporan-kegiatan'],compact('laporankegiatan'));
-    //     return $pdf->download('laporan_kegiatan.pdf');
-    // }
+    public function export(){
+          $laporankegiatan = LaporanKegiatanModels::join('proyek', 'laporan_kegiatan.id_proyek', '=', 'proyek.id')
+            ->join('users', 'users.id', '=', 'laporan_kegiatan.id_karyawan')
+            ->get(['laporan_kegiatan.*','users.name','proyek.nama_proyek']);  
+        // $pdf = PDF::loadView('',[ 'title' => 'Laporan-kegiatan'], compact('laporankegiatan'));
+        return view(
+            'laporankegiatan.export',
+            [
+                'title' => 'export-laporankegiatan-page'
+            ],
+            compact('laporankegiatan')
+        );
+    }
      
 }

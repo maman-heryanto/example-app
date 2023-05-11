@@ -19,16 +19,26 @@
                                 @csrf
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="hidden" class="form-control" placeholder="ID Karyawan"
-                                            id="id_karyawan" name="id_karyawan" value="{{ Auth::user()->id }}"/>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->name }}" readonly/>
+                                        @if (Auth::user()->id_level != 1)
+                                            <input type="hidden" class="form-control" placeholder="ID Karyawan"
+                                                id="id_karyawan" name="id_karyawan" value="{{ Auth::user()->id }}" />
+                                            <input type="text" class="form-control" value="{{ Auth::user()->name }}"
+                                                readonly />
+                                        @else
+                                            <select class="form-control show-tick" name="id_karyawan" id="id_karyawan">
+                                                @foreach ($karyawan as $k)
+                                                    <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        @endif
+
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Masukan Kegiatan" id="kegiatan"
-                                            name="kegiatan" />
+                                        <input type="text" class="form-control" placeholder="Masukan Kegiatan"
+                                            id="kegiatan" name="kegiatan" />
                                     </div>
                                     @error('kegiatan')
                                         <div class="text-danger">{{ $message }}</div>
@@ -42,7 +52,7 @@
                                             <option value="{{ $p->id }}">{{ $p->nama_proyek }}</option>
                                         @endforeach
                                     </select>
-                                     @error('id_proyek')
+                                    @error('id_proyek')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -60,17 +70,19 @@
                                 <div class="form-group">
                                     <div class="form-line" id="bs_datepicker_container"
                                         style="z-index: 10; display: block;">
-                                        <input type="text" class="datepicker form-control" placeholder="Masukan Start proyek" name="start" id="start">
+                                        <input type="text" class="datepicker form-control"
+                                            placeholder="Masukan Start proyek" name="start" id="start">
                                     </div>
                                     @error('start')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                 <p class="card-inside">Target Proyek</p>
+                                <p class="card-inside">Target Proyek</p>
                                 <div class="form-group">
                                     <div class="form-line" id="bs_datepicker_container"
                                         style="z-index: 10; display: block;">
-                                        <input type="text" class="datepicker form-control" placeholder="Masukan Target proyek" name="target" id="target">
+                                        <input type="text" class="datepicker form-control"
+                                            placeholder="Masukan Target proyek" name="target" id="target">
                                     </div>
                                     @error('target')
                                         <div class="text-danger">{{ $message }}</div>

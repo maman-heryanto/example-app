@@ -36,13 +36,14 @@
     <!-- Bootstrap DatePicker Css -->
     <link href="{{ asset('vendor/adminbsb/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}"
         rel="stylesheet" />
+
+    {{-- EXTENSION TEMPLATE --}}
     <!-- form select ex -->
     <link rel="stylesheet" href="{{ asset('vendor/adminbsb/extension/bootstrap-select.min.js') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminbsb/extension/select-bootstrap-select.min.css') }}">
+    {{-- sweetsAlert --}}
+    {{-- <link rel="stylesheet" href="{{ asset('vendor/adminbsb/extension/sweetalert2.min.css') }}"> --}}
 
-    <!-- JQuery DataTable Css -->
-    <link href="{{ asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css"> --}}
 
 </head>
 
@@ -122,29 +123,23 @@
     <!-- JQuery DataTable Css -->
     <link href="{{ asset('vendor/adminbsb/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}"
         rel="stylesheet">
+
     <!-- Jquery DataTable Plugin Js -->
-    {{-- offline --}}
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/extensions/export/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/extensions/export/jszip.min.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/extensions/export/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
-    {{-- online --}}
-    {{-- <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script> --}}
 
     <!-- Custom Js -->
     <script src="{{ asset('vendor/adminbsb/js/demo.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/js/pages/forms/basic-form-elements.js') }}"></script>
-    <script src="{{ asset('vendor/adminbsb/js/pages/tables/jquery-datatable.js') }}"></script>
-    {{-- <script src="{{ asset('vendor/adminbsb/js/pages/ui/notifications.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/adminbsb/js/pages/forms/basic-form-elements.js') }}"></script> --}}
 
+    {{-- EXTENSION --}}
+    {{-- sweetsAlert
+    <script src="{{ asset('vendor/adminbsb/extension/sweetalert2.min.js') }}"></script>
+    <script>
+        Swal.fire(
+            'The Internet?',
+            'That thing is still around?',
+            'question'
+        )
+    </script> --}}
 
 </body>
 
