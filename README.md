@@ -10,3 +10,8 @@
 ## About Laravel
 
 Project Laporan Kegiatan AEC
+
+## Used
+- PHP Version 8.2.4
+- Node Js Version 18.16.0
+- MariaDB version 10.4.28
