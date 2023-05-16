@@ -85,14 +85,13 @@ class LaporanKegiatanController extends Controller
         );
     }
 
-   
     public function update($id,Request $request)
     {
         $request->validate([
             "id_karyawan" => ['required'],
             "kegiatan" => ['required'],
             "id_proyek" => ['required'],
-            "ruas" => ['required','not_regex'],
+            "ruas" => ['required',],
             "start" => ['required'],
             "target" => ['required'],
         ]);
@@ -118,8 +117,7 @@ class LaporanKegiatanController extends Controller
     public function export(){
           $laporankegiatan = LaporanKegiatanModels::join('proyek', 'laporan_kegiatan.id_proyek', '=', 'proyek.id')
             ->join('users', 'users.id', '=', 'laporan_kegiatan.id_karyawan')
-            ->get(['laporan_kegiatan.*','users.name','proyek.nama_proyek']);  
-        // $pdf = PDF::loadView('',[ 'title' => 'Laporan-kegiatan'], compact('laporankegiatan'));
+            ->get(['laporan_kegiatan.*','users.name','proyek.nama_proyek']);
         return view(
             'laporankegiatan.export',
             [

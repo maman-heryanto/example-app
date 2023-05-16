@@ -12,8 +12,8 @@
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    {{-- <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li> --}}
-                    {{-- <li role="separator" class="divider"></li> --}}
+                    <li><a href="/profile/{{Auth::user()->id }}/change-password"><i class="material-icons">person</i>Change Password</a></li>
+                    <li role="separator" class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -51,13 +51,13 @@
                             <span>Laporan-Kegiatan</span>
                         </a>
                     </li>
-                     @if (Auth::user()->id_level == 1)
-                    <li>
-                        <a href="/proyek">
-                            <i class="material-icons">gavel</i>
-                            <span>Proyek</span>
-                        </a>
-                    </li>
+                    @if (Auth::user()->id_level == 1)
+                        <li>
+                            <a href="/proyek">
+                                <i class="material-icons">gavel</i>
+                                <span>Proyek</span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </li>

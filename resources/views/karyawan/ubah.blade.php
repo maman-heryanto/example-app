@@ -36,7 +36,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                <p>NOTE: Kosongkan Password jika tidak ingin diubah</p>
+                                    <p>NOTE: Kosongkan Password jika tidak ingin diubah</p>
                                     <div class="form-line">
                                         <input type="password" class="form-control" placeholder="Masukan Password"
                                             id="password" name="password" autocomplete="new-password" />
@@ -48,8 +48,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input placeholder="Masukan Password Lagi" id="password-confirm" type="password"
-                                            class="form-control" name="password_confirmation"
-                                            autocomplete="new-password" />
+                                            class="form-control" name="password_confirmation" autocomplete="new-password" />
                                     </div>
                                     @error('password')
                                         <div class="text-danger">{{ $message }}</div>
@@ -60,9 +59,9 @@
                                         <option value="">-- Please select --</option>
                                         @foreach ($level as $l)
                                             @if ($l->id == $karyawan->id_level)
-                                            <option value="{{ $l->id }}" selected>{{ $l->nama_level }}</option>
+                                                <option value="{{ $l->id }}" selected>{{ $l->nama_level }}</option>
                                             @else
-                                            <option value="{{ $l->id }}">{{ $l->nama_level }}</option>
+                                                <option value="{{ $l->id }}">{{ $l->nama_level }}</option>
                                             @endif
                                         @endforeach
                                     </select>

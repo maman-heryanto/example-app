@@ -57,7 +57,8 @@ class KaryawanController extends Controller
         'id_level' => ['required'],
         'name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'password' => ['required', 'min:8', 'confirmed']
+        // 'password' => ['required', 'min:8', 'confirmed']
+        'password' => ('required|min:8|confirmed'),
     ]);
         KaryawanModels::create([
             'id_level' => $request['id_level'],

@@ -7,6 +7,7 @@ use App\Http\Controllers\ProyekController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanKegiatanController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,8 @@ Route::post('/karyawan/store', [KaryawanController::class,'store']);
 Route::get('/karyawan/{id}/ubah', [KaryawanController::class,'ubah']);
 Route::put('/karyawan/{id}', [KaryawanController::class,'update']);
 Route::delete('/karyawan/{id}', [KaryawanController::class,'destroy']);
-
+//Profile
+Route::get('/profile/{id}/change-password', [ProfileController::class,'changePassword']);
+Route::put('/profile/{id}', [ProfileController::class,'update']);
 });
 

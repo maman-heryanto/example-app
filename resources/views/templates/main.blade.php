@@ -131,14 +131,10 @@
     {{-- <script src="{{ asset('vendor/adminbsb/js/pages/forms/basic-form-elements.js') }}"></script> --}}
 
     {{-- EXTENSION --}}
-    {{-- sweetsAlert
-    <script src="{{ asset('vendor/adminbsb/extension/sweetalert2.min.js') }}"></script>
+    {{-- sweetsAlert --}}
+    {{-- <script src="{{ asset('vendor/adminbsb/extension/sweetalert2.min.js') }}"></script>
     <script>
-        Swal.fire(
-            'The Internet?',
-            'That thing is still around?',
-            'question'
-        )
+       swal.fire("Here's a message!");
     </script> --}}
 
 </body>
